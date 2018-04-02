@@ -1,7 +1,7 @@
 /*
 Author: Jade C. Rigby
 Date: 4/1/2018
-Version: 0.1.0
+Version: 0.1.1
  License: MIT
 
 jQuishy is designed to take either a css string descriptor or a node object
@@ -47,7 +47,7 @@ function _$(el) {
 					if (args.length === 2) {
 						_item_.style.cssText = `${args[0]} : ${args[1]}`;
 					}
-					else if (args.constructor === Array) {
+					else if (args[0].constructor === Object) {
 						let attributeString = '';
 						for (let key in args[0]) {
 							let keyString = key.replace( /([a-z])([A-Z])/g, '$1-$2' ).toLowerCase();
