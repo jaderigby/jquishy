@@ -1,6 +1,6 @@
 # jQuishy
 
-jQuishy is a superficial replacement for jQuery.  It offers the most common, in my experience, features (sans ajax) used in jQuery. In many projects, this will give you the minimum capabilities needed.  Use it, as a replacement for the full jQuery library.  Below, you can see a list of features, and a description of attributes utilized.  If it fits the parameters of your project, I encourage to use it with its 2kb footprint.
+jQuishy is a superficial replacement for jQuery.  It offers the most common, in my experience, features (sans ajax) used in jQuery. In many projects, this will give you the minimum capabilities needed.  Use it, as a replacement for the full jQuery library.  Below, you can see a list of features, and a description of attributes utilized.  If it fits the parameters of your project, I encourage you to use it with its 2kb footprint.
 
 ## Features
 
