@@ -1,7 +1,7 @@
 /*
 Author: Jade C. Rigby
 Date: 4/2/2018
-Version: 0.1.1
+Version: 0.1.2
  License: MIT
 
 jQuishy is designed to take either a css string descriptor or a node object
@@ -73,20 +73,22 @@ function _$(el) {
 				});
 			},
 			toggleClass : (cls) => {
-				if (cls.classList) {
-				  cls.classList.toggle(className);
-				} else {
-				  var classes = cls.className.split(' ');
-				  var existingIndex = classes.indexOf(className);
+        (target).forEach( (_item_) => {
+  				if (_item_.classList) {
+  				  _item_.classList.toggle(cls);
+  				} else {
+  				  var classes = _item_.className.split(' ');
+  				  var existingIndex = classes.indexOf(cls);
 
-				  if (existingIndex >= 0) {
-						classes.splice(existingIndex, 1);
-					} else {
-						classes.push(className);
-					}
-				  cls.className = classes.join(' ');
-				}
-			},
+  				  if (existingIndex >= 0) {
+  						classes.splice(existingIndex, 1);
+  					} else {
+  						classes.push(cls);
+  					}
+  				  _item_.className = classes.join(' ');
+  				}
+  			}
+      },
 			append : (str) => {
 				(target).forEach( (_item_) => {
 					_item_.insertAdjacentHTML('beforeend', str);
