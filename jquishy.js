@@ -87,7 +87,7 @@ function _$(el) {
   					}
   				  _item_.className = classes.join(' ');
   				}
-  			}
+  			});
       },
 			append : (str) => {
 				(target).forEach( (_item_) => {
