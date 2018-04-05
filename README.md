@@ -20,13 +20,12 @@ __Note:__ Notice that you can replace your existing jQuery declarations by repla
 
 ## Attributes
 
-jQuishy utilizes aspects of modern JavaScript, namely ES2015.  Below is a list.
+jQuishy uses the following features:
 
-- arrow functions
-- let and const variable declarations
-- template literals
 - forEach array method (ES5)
-- querySelectorAll selector
-- insertAdjacentHTML appender technique
+- querySelectorAll
+- insertAdjacentHTML (appending)
+- classList (add, remove, toggle)
 
-Take note of these features in deciding if this library is appropriate for your project.  In general, support for this library exists in all modern browsers, and from IE9 and up.
+Take note of these features in deciding if this library is appropriate for your project.  In general, support for this library exists in all modern browsers, and from IE10 and up.  IE9 and up can be supported with the addition of the following shim, or similar: 'https://github.com/eligrey/classList.js/blob/master/classList.js'
+Without the shim, all features but 'addClass', 'toggleClass', and 'removeClass' still work.

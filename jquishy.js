@@ -24,9 +24,9 @@ function _$(el) {
 	}
 	if (target !== undefined) {
 		return {
-			attr : (desc, value) => {
+			attr : function(desc, value) {
 				var valList = [];
-				(target).forEach( (_item_) => {
+				(target).forEach( function(_item_) {
 					if (value === undefined) {
 						var val = _item_.getAttribute(desc);
 						valList.push(val);
@@ -42,12 +42,11 @@ function _$(el) {
 					return valList;
 				};
 			},
-			css : (arg1, arg2) => {
-				(target).forEach( (_item_) => {
+			css : function(arg1, arg2) {
+				(target).forEach( function(_item_) {
 					var args = [];
 					args.push(arg1);
 					(arg2) ? args.push(arg2) : null;
-					// console.log("arguments: ", args);
 					if (args.length === 2) {
 						_item_.style.cssText = args[0] +" : "+ args[1];
 					}
@@ -62,13 +61,13 @@ function _$(el) {
 					}
 				});
 			},
-			addClass : (cls) => {
-				(target).forEach( (_item_) => {
+			addClass : function(cls) {
+				(target).forEach( function(_item_) {
 					(_item_.classList) ? _item_.classList.add(cls) : _item_.className += ' ' + cls;
 				});
 			},
-			removeClass : (cls) => {
-				(target).forEach( (_item_) => {
+			removeClass : function(cls) {
+				(target).forEach( function(_item_) {
 					if (_item_.classList) {
 						_item_.classList.remove(cls);
 					} else {
@@ -76,8 +75,8 @@ function _$(el) {
 					}
 				});
 			},
-			toggleClass : (cls) => {
-        (target).forEach( (_item_) => {
+			toggleClass : function(cls) {
+        (target).forEach( function(_item_) {
   				if (_item_.classList) {
   				  _item_.classList.toggle(cls);
   				} else {
@@ -93,13 +92,13 @@ function _$(el) {
   				}
   			});
       },
-			append : (str) => {
-				(target).forEach( (_item_) => {
+			append : function(str) {
+				(target).forEach( function(_item_) {
 					_item_.insertAdjacentHTML('beforeend', str);
 				});
 			},
-			delegate : (desc, evt, func) => {
-				target[0].addEventListener(evt, (e) => {
+			delegate : function(desc, evt, func) {
+				target[0].addEventListener(evt, function(e) {
 					if (e.target && e.target.matches(desc)) {
 	   				func();
 					}
