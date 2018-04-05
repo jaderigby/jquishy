@@ -15,7 +15,7 @@ var myNode = document.getElementById('#container');
 _$(myNode).css('display', 'block');
 */
 function _$(el) {
-	let target;
+	var target;
 	if (typeof el === 'string') {
 		target = document.querySelectorAll(el);
 	}
@@ -25,10 +25,10 @@ function _$(el) {
 	if (target !== undefined) {
 		return {
 			attr : (desc, value) => {
-				let valList = [];
+				var valList = [];
 				(target).forEach( (_item_) => {
 					if (value === undefined) {
-						let val = _item_.getAttribute(desc);
+						var val = _item_.getAttribute(desc);
 						valList.push(val);
 					}
 					else {
@@ -42,16 +42,20 @@ function _$(el) {
 					return valList;
 				};
 			},
-			css : (...args) => {
+			css : (arg1, arg2) => {
 				(target).forEach( (_item_) => {
+					var args = [];
+					args.push(arg1);
+					(arg2) ? args.push(arg2) : null;
+					// console.log("arguments: ", args);
 					if (args.length === 2) {
-						_item_.style.cssText = `${args[0]} : ${args[1]}`;
+						_item_.style.cssText = args[0] +" : "+ args[1];
 					}
-					else if (args[0].constructor === Object) {
-						let attributeString = '';
-						for (let key in args[0]) {
-							let keyString = key.replace( /([a-z])([A-Z])/g, '$1-$2' ).toLowerCase();
-							let newAttribute = `${keyString} : ${args[0][key]};`;
+					else if (args[0]) {
+						var attributeString = '';
+						for (var key in args[0]) {
+							var keyString = key.replace( /([a-z])([A-Z])/g, '$1-$2' ).toLowerCase();
+							var newAttribute = keyString +":"+ args[0][key] +";";
 							attributeString += newAttribute;
 						}
 						_item_.style.cssText = attributeString;
