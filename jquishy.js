@@ -1,7 +1,7 @@
 /*
 Author: Jade C. Rigby
 Date: 4/2/2018
-Version: 0.1.2
+Version: 0.1.3
  License: MIT
 
 jQuishy is designed to take either a css string descriptor or a node object
