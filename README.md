@@ -16,6 +16,7 @@ __Note:__ Notice that you can replace your existing jQuery declarations by repla
 - removeClass
 - toggleClass
 - append
+- click
 - delegate
 
 ## Attributes
