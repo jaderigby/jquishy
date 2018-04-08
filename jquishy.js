@@ -1,7 +1,7 @@
 /*
 Author: Jade C. Rigby
-Date: 4/5/2018
-Version: 0.1.3
+Date: 4/7/2018
+Version: 0.2.0
  License: MIT
 
 jQuishy is designed to take either a css string descriptor or a node object
@@ -97,10 +97,17 @@ function _$(el) {
 					_item_.insertAdjacentHTML('beforeend', str);
 				});
 			},
-			delegate : function(desc, evt, func) {
-				target[0].addEventListener(evt, function(e) {
-					if (e.target && e.target.matches(desc)) {
-	   				func();
+			click : function(func) {
+				(target).forEach( function(_item_) {
+					_item_.addEventListener('click', function(evt) {
+						func(evt);
+					});
+				});
+			},
+			delegate : function(desc, evtType, func) {
+				target[0].addEventListener(evtType, function(evt) {
+					if (evt.target && evt.target.matches(desc)) {
+	   				func(evt);
 					}
 				});
 			},
@@ -110,3 +117,5 @@ function _$(el) {
 	}
 	else { return };
 }
+// The following line is used for testing, and can be ignored
+// module.exports = _$;
