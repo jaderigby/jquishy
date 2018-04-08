@@ -21,7 +21,7 @@ __Note:__ Notice that you can replace your existing jQuery declarations by repla
 
 ## Attributes
 
-jQuishy uses the following features:
+jQuishy uses the following JavaScript attributes:
 
 - forEach array method (ES5)
 - querySelectorAll
