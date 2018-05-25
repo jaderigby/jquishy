@@ -54,16 +54,10 @@ var jQuishy = function(el) {
 	}
 
 	this.items = this.target;
-	this.item = this.target[0];
 }
 
 jQuishy.prototype.first = function() {
 	this.target = [this.item];
-	return this;
-}
-
-jQuishy.prototype.items = function() {
-	this.items = this.target;
 	return this;
 }
 
