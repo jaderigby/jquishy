@@ -1,8 +1,11 @@
 /*
 Author: Jade C. Rigby
 Date: 5/24/2018
-Version: 0.3.1
+Version: 1.0.0
 License: MIT
+
+jQuishy is now built for chaining!
+Also, added support for "first()"
 
 jQuishy is designed to take either a css string descriptor, a Nodelist, an HTMLCollection (gets converted to an Array), or a node object
 EXAMPLE:
@@ -38,7 +41,7 @@ _$(myNode).css('display', 'block');
 })([Element.prototype, CharacterData.prototype, DocumentType.prototype]);
 // ======================================================
 
-function _$(el) {
+var jQuishy = function(el) {
 	this.target;
 	if (typeof el === 'string') {
 		this.target = document.querySelectorAll(el);
@@ -49,40 +52,42 @@ function _$(el) {
 	else if (el !== undefined) {
 		this.target = [el];
 	}
-	if (!(this instanceof _$)) {
-    return new _$(el);
-  }
+
 	this.items = this.target;
-	this.first = this.target[0];
-	this.item = this.first;
+	this.item = this.target[0];
 }
 
-_$.prototype.items = function() {
+jQuishy.prototype.first = function() {
+	this.target = [this.item];
+	return this;
+}
+
+jQuishy.prototype.items = function() {
 	this.items = this.target;
 	return this;
 }
 
-_$.prototype.attr = function(desc, value) {
-  var valList = [];
-  (target).forEach( function(_item_) {
-    if (value === undefined) {
-      var val = _item_.getAttribute(desc);
-      valList.push(val);
-    }
-    else {
-      _item_.setAttribute(desc, value);
-    }
-  });
-  if (valList.length === 1) {
-    return valList[0];
-  }
-  else {
-    return valList;
-  };
+jQuishy.prototype.attr = function(desc, value) {
+	var valList = [];
+	(this.target).forEach( function(_item_) {
+		if (value === undefined) {
+			var val = _item_.getAttribute(desc);
+			valList.push(val);
+		}
+		else {
+			_item_.setAttribute(desc, value);
+		}
+	});
+	if (valList.length === 1) {
+		return valList[0];
+	}
+	else {
+		return valList;
+	};
 }
 
-_$.prototype.css = function(arg1, arg2) {
-	(target).forEach( function(_item_) {
+jQuishy.prototype.css = function(arg1, arg2) {
+	(this.target).forEach( function(_item_) {
 		var args = [];
 		args.push(arg1);
 		(arg2) ? args.push(arg2) : null;
@@ -99,26 +104,29 @@ _$.prototype.css = function(arg1, arg2) {
 			_item_.style.cssText = attributeString;
 		}
 	});
+	return this;
 }
 
-_$.prototype.addClass = function(cls) {
-	(target).forEach( function(_item_) {
+jQuishy.prototype.addClass = function(cls) {
+	(this.target).forEach( function(_item_) {
 		(_item_.classList) ? _item_.classList.add(cls) : _item_.className += ' ' + cls;
 	});
+	return this;
 }
 
-_$.prototype.removeClass = function(cls) {
-	(target).forEach( function(_item_) {
+jQuishy.prototype.removeClass = function(cls) {
+	(this.target).forEach( function(_item_) {
 		if (_item_.classList) {
 			_item_.classList.remove(cls);
 		} else {
 			_item_.className = _item_.className.replace(new RegExp('(^|\\b)' + cls.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
 		}
 	});
+	return this;
 }
 
-_$.prototype.toggleClass = function(cls) {
-	(target).forEach( function(_item_) {
+jQuishy.prototype.toggleClass = function(cls) {
+	(this.target).forEach( function(_item_) {
 		if (_item_.classList) {
 			_item_.classList.toggle(cls);
 		} else {
@@ -133,28 +141,36 @@ _$.prototype.toggleClass = function(cls) {
 			_item_.className = classes.join(' ');
 		}
 	});
+	return this;
 }
 
-_$.prototype.append = function(str) {
-	(target).forEach( function(_item_) {
+jQuishy.prototype.append = function(str) {
+	(this.target).forEach( function(_item_) {
 		_item_.insertAdjacentHTML('beforeend', str);
 	});
+	return this;
 }
 
-_$.prototype.click = function(func) {
-	(target).forEach( function(_item_) {
+jQuishy.prototype.click = function(func) {
+	(this.target).forEach( function(_item_) {
 		_item_.addEventListener('click', function(evt) {
 			func(evt);
 		});
 	});
+	return this;
 }
 
-_$.prototype.delegate = function(desc, evtType, func) {
-	target[0].addEventListener(evtType, function(evt) {
+jQuishy.prototype.delegate = function(desc, evtType, func) {
+	this.target[0].addEventListener(evtType, function(evt) {
 		if (evt.target && evt.target.matches(desc)) {
 			func(evt);
 		}
 	});
+	return this;
+}
+
+function _$(el) {
+		return new jQuishy(el);
 }
 // The following line is used for testing, and can be ignored
 // module.exports = _$;
