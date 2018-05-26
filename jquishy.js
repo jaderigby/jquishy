@@ -108,29 +108,29 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 // ======================================================
 
 var jQuishy = function(el) {
-	this.target;
+	this.t;
 	if (typeof el === 'string') {
-		this.target = document.querySelectorAll(el);
+		this.t = document.querySelectorAll(el);
 	}
 	else if (el instanceof HTMLCollection) {
-		this.target = [].slice.call(el);
+		this.t = [].slice.call(el);
 	}
 	else if (el !== undefined) {
-		this.target = [el];
+		this.t = [el];
 	}
 
-	this.items = this.target;
-	this.item = this.target[0];
+	this.items = this.t;
+	this.item = this.t[0];
 }
 
 jQuishy.prototype.first = function() {
-	this.target = [this.item];
+	this.t = [this.item];
 	return this;
 }
 
 jQuishy.prototype.attr = function(desc, value) {
 	var valList = [];
-	(this.target).forEach( function(_item_) {
+	(this.t).forEach( function(_item_) {
 		if (value === undefined) {
 			var val = _item_.getAttribute(desc);
 			valList.push(val);
@@ -148,7 +148,7 @@ jQuishy.prototype.attr = function(desc, value) {
 }
 
 jQuishy.prototype.css = function(arg1, arg2) {
-	(this.target).forEach( function(_item_) {
+	(this.t).forEach( function(_item_) {
 		var args = [];
 		args.push(arg1);
 		(arg2) ? args.push(arg2) : null;
@@ -169,14 +169,14 @@ jQuishy.prototype.css = function(arg1, arg2) {
 }
 
 jQuishy.prototype.addClass = function(cls) {
-	(this.target).forEach( function(_item_) {
+	(this.t).forEach( function(_item_) {
 		(_item_.classList) ? _item_.classList.add(cls) : _item_.className += ' ' + cls;
 	});
 	return this;
 }
 
 jQuishy.prototype.removeClass = function(cls) {
-	(this.target).forEach( function(_item_) {
+	(this.t).forEach( function(_item_) {
 		if (_item_.classList) {
 			_item_.classList.remove(cls);
 		} else {
@@ -187,7 +187,7 @@ jQuishy.prototype.removeClass = function(cls) {
 }
 
 jQuishy.prototype.toggleClass = function(cls) {
-	(this.target).forEach( function(_item_) {
+	(this.t).forEach( function(_item_) {
 		if (_item_.classList) {
 			_item_.classList.toggle(cls);
 		} else {
@@ -206,14 +206,14 @@ jQuishy.prototype.toggleClass = function(cls) {
 }
 
 jQuishy.prototype.append = function(str) {
-	(this.target).forEach( function(_item_) {
+	(this.t).forEach( function(_item_) {
 		_item_.insertAdjacentHTML('beforeend', str);
 	});
 	return this;
 }
 
 jQuishy.prototype.click = function(func) {
-	(this.target).forEach( function(_item_) {
+	(this.t).forEach( function(_item_) {
 		_item_.addEventListener('click', function(evt) {
 			func(evt);
 		});
@@ -222,7 +222,7 @@ jQuishy.prototype.click = function(func) {
 }
 
 jQuishy.prototype.delegate = function(desc, evtType, func) {
-	this.target[0].addEventListener(evtType, function(evt) {
+	this.t[0].addEventListener(evtType, function(evt) {
 		if (evt.target && evt.target.matches(desc)) {
 			func(evt);
 		}
