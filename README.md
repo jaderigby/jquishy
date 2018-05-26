@@ -20,11 +20,34 @@ __Note:__ Notice that you can replace your existing jQuery declarations by addin
 - click
 - delegate
 
+## Native Output Features
+
+Since jQuishy works with native objects (Nodes, NodeLists, HTMLCollections), you may want to chain normal JS methods onto jQuishy.  Well, you can!  The following returns the objects you need:
+
+- _$().items = all items matching selector
+- _$().item = first, or only item matching selector
+
+Example:
+
+```
+<div class="wrapper">
+...
+</div>
+<div class="wrapper">
+...
+</div>
+<script>
+  _$('.wrapper').items.forEach(function(_item_) {
+    _$(_item_).addClass("post-entry");
+  });
+</script>
+```
+
 ## Polyfills
 
 - Array.forEach
 - NodeList.forEach
-- remove
+- .remove
 
 ## Attributes
 
