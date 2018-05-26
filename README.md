@@ -8,6 +8,23 @@ jQuishy is a superficial replacement for jQuery.  It offers many of the most com
 
 __Note:__ Notice that you can replace your existing jQuery declarations by adding an underscore to the front of your jQuery prefixes. In other words, "$" becomes "\_$".
 
+## Selectors
+
+jQuishy can take several types of objects for its first parameter, ie, "selector".
+
+- __string:__ <br />`_$('#container ul li:first-child').addClass('active');`
+
+- __Node:__ <br />
+`var myNode = document.getElementById('#container');` <br />
+`_$(myNode).css('display', 'block');`
+
+- __NodeList:__ <br /> `var myNodeList = document.querySelectorAll('.navigation li');` <br />
+`_$(myNodeList).removeClass('active');`
+
+- __HTMLCollection:__ <br /> `_$(e.target.parent.children).removeClass('active');`
+
+__Note:__ HTMLCollections are transformed into Arrays.
+
 ## Features
 
 - remove
