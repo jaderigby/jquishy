@@ -1,12 +1,12 @@
 # jQuishy
 
-jQuishy is a superficial replacement for jQuery.  It offers the most common, in my experience, features (sans ajax) used in jQuery. In many projects, this will give you the minimum capabilities needed.  Use it, as a replacement for the full jQuery library.  Below, you can see a list of features, and a description of attributes utilized.  If it fits the parameters of your project, I encourage you to use it with its 2kb footprint.
+jQuishy is a superficial replacement for jQuery.  It offers the most common, in my experience, features (sans ajax) used in jQuery. In many projects, this will give you the minimum capabilities needed.  Use it, as a replacement for the full jQuery library.  Below, you can see a list of features, and a description of attributes utilized.  If it fits the parameters of your project, I encourage you to use it with its 3kb footprint.
 
 ## Usage
 
 `_$('#container').css("display", "block");`
 
-__Note:__ Notice that you can replace your existing jQuery declarations by replacing the jQuery prefix "$" with "\_$", thus making it easy to convert over.
+__Note:__ Notice that you can replace your existing jQuery declarations by adding an underscore to the front of your jQuery prefixes. So, "$" becomes "\_$".
 
 ## Features
 
@@ -20,11 +20,16 @@ __Note:__ Notice that you can replace your existing jQuery declarations by repla
 - click
 - delegate
 
+## Polyfills
+
+- Array.forEach
+- NodeList.forEach
+- remove
+
 ## Attributes
 
 jQuishy uses the following JavaScript attributes:
 
-- forEach array method (ES5)
 - querySelectorAll
 - insertAdjacentHTML (appending)
 - classList (add, remove, toggle)
