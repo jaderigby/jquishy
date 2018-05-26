@@ -8,6 +8,18 @@ jQuishy is a superficial replacement for jQuery.  It offers many of the most com
 
 __Note:__ Notice that you can replace your existing jQuery declarations by adding an underscore to the front of your jQuery prefixes. In other words, "$" becomes "\_$".
 
+## Features
+
+- remove
+- attr
+- css
+- addClass
+- removeClass
+- toggleClass
+- append
+- click
+- delegate
+
 ## Selectors
 
 jQuishy can take several types of objects for its first parameter, ie, "selector".
@@ -24,18 +36,6 @@ jQuishy can take several types of objects for its first parameter, ie, "selector
 - __HTMLCollection:__ <br /> `_$(e.target.parent.children).removeClass('active');`
 
 __Note:__ HTMLCollections are transformed into Arrays.
-
-## Features
-
-- remove
-- attr
-- css
-- addClass
-- removeClass
-- toggleClass
-- append
-- click
-- delegate
 
 ## Native Output Features
 
@@ -61,6 +61,8 @@ Example:
 ```
 
 ## Polyfills
+
+jQuishy includes the following Polyfills:
 
 - Array.forEach
 - NodeList.forEach
