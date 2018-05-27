@@ -10,6 +10,7 @@ __Note:__ Notice that you can replace your existing jQuery declarations by addin
 
 ## Features
 
+- first
 - remove
 - attr
 - css
