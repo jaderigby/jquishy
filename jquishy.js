@@ -2,8 +2,8 @@
 jQuishy
 ----------------------
 Author: Jade C. Rigby
-Date: 5/26/2018
-Version: 1.1.0
+Date: 5/30/2018
+Version: 1.1.1
 License: MIT
 ----------------------
 */
@@ -205,10 +205,19 @@ jQuishy.prototype.toggleClass = function(cls) {
 	return this;
 }
 
-jQuishy.prototype.append = function(str) {
-	(this.t).forEach( function(_item_) {
-		_item_.insertAdjacentHTML('beforeend', str);
+function paPos(titems, where, str) {
+	(titems).forEach( function(_item_) {
+		_item_.insertAdjacentHTML(where, str);
 	});
+}
+
+jQuishy.prototype.prepend = function(str) {
+	paPos(this.t, 'afterbegin', str);
+	return this;
+}
+
+jQuishy.prototype.append = function(str) {
+	paPos(this.t, 'beforeend', str);
 	return this;
 }
 
@@ -234,4 +243,4 @@ function _$(el) {
 		return new jQuishy(el);
 }
 // The following line is used for testing, and can be ignored
-// module.exports = _$;
+module.exports = _$;
