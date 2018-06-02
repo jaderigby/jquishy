@@ -17,6 +17,7 @@ __Note:__ Notice that you can replace your existing jQuery declarations by addin
 - addClass
 - removeClass
 - toggleClass
+- prepend
 - append
 - click
 - delegate
@@ -79,3 +80,44 @@ jQuishy uses the following JavaScript attributes:
 
 Take note of these features in deciding if this library is appropriate for your project.  In general, support for this library exists in all modern browsers, and from IE10 and up.  IE9 and up can be supported with the addition of the following shim, or similar: 'https://github.com/eligrey/classList.js/blob/master/classList.js'
 Without the shim, all features but 'addClass', 'toggleClass', and 'removeClass' still work.
+
+## Take jQuishy Further ##
+
+### Detach ###
+
+__Code:__
+
+```
+jQuishy.prototype.detach = function() {
+  var item = this.t[0];
+  item.remove();
+  return item.outerHTML || new XMLSerializer().serializeToString(item);
+}
+```
+
+__Usage:__
+
+```
+_$('.modal.window').items.forEach(function(_modal_) {
+  var thisModal = _$(_modal_).detach();
+  _$('#modalViewport').prepend(thisModal);
+});
+```
+
+### Window scrollTop ###
+
+__Code:__
+
+```
+function windowScrollTop() {
+  var doc = document.documentElement;
+  var top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+  return top;
+}
+```
+
+__Usage:__
+
+```
+var scrollTop = windowScrollTop();
+```
