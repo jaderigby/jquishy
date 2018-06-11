@@ -8,12 +8,19 @@ jQuishy is a superficial replacement for jQuery.  It offers many of the most com
 
 __Note:__ Notice that you can replace your existing jQuery declarations by adding an underscore to the front of your jQuery prefixes. In other words, "$" becomes "\_$".
 
+## Helpers ##
+
+- items
+- item
+- vanilla
+
 ## Features
 
 - first
 - remove
 - attr
 - css
+- hasClass
 - addClass
 - removeClass
 - toggleClass
@@ -75,7 +82,7 @@ jQuishy includes the following Polyfills:
 jQuishy uses the following JavaScript attributes:
 
 - querySelectorAll
-- insertAdjacentHTML (appending)
+- insertAdjacentHTML (prepending, appending)
 - classList (add, remove, toggle)
 
 Take note of these features in deciding if this library is appropriate for your project.  In general, support for this library exists in all modern browsers, and from IE10 and up.  IE9 and up can be supported with the addition of the following shim, or similar: 'https://github.com/eligrey/classList.js/blob/master/classList.js'
