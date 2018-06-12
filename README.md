@@ -128,3 +128,15 @@ __Usage:__
 ```
 var scrollTop = windowScrollTop();
 ```
+
+## What About "Siblings"? ##
+
+Since jQuishy can take Nodelists and HTMLCollections as selectors, you can use native JavaScript methods as selectors, as well, such as:
+
+```
+_$(e.target.parent.children).forEach(function(_item_) {
+  ...
+});
+```
+
+So, in essence something like, `$(this).siblings()` becomes `_$(e.target.parent.children)`.
