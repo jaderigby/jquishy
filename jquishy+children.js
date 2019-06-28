@@ -2,8 +2,8 @@
 jQuishy + Children Polyfill
 ----------------------
 Author: Jade C. Rigby
-Date: 6/11/2018
-Version: 1.2.0
+Date: 6/28/2019
+Version: 1.3.0
 License: MIT
 ----------------------
 */
@@ -122,6 +122,7 @@ var jQuishy = function(el) {
 	this.items = this.t;
 	this.item = this.t[0];
 	this.vanilla = (this.t.length === 1) ? this.t[0] : this.t;
+	this.asString = this.vanilla.innerHTML;
 }
 
 jQuishy.prototype.first = function() {
