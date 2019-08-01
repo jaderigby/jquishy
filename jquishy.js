@@ -3,7 +3,7 @@ jQuishy
 ----------------------
 Author: Jade C. Rigby
 Date: 6/28/2019
-Version: 1.3.0
+Version: 1.4.0
 License: MIT
 ----------------------
 */
@@ -251,7 +251,7 @@ jQuishy.prototype.delegate = function(desc, evtType, func) {
 }
 
 function _$(el) {
-		return new jQuishy(el);
+	return (el) ? new jQuishy(el) : "1.4.0";
 }
 // The following line is used for testing, and can be ignored
 // module.exports = _$;

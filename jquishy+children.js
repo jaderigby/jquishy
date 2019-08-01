@@ -3,7 +3,7 @@ jQuishy + Children Polyfill
 ----------------------
 Author: Jade C. Rigby
 Date: 6/28/2019
-Version: 1.3.0
+Version: 1.4.0
 License: MIT
 ----------------------
 */
@@ -122,7 +122,7 @@ var jQuishy = function(el) {
 	this.items = this.t;
 	this.item = this.t[0];
 	this.vanilla = (this.t.length === 1) ? this.t[0] : this.t;
-	this.asString = this.vanilla.innerHTML;
+	this.asString = this.vanilla.outerHTML;
 }
 
 jQuishy.prototype.first = function() {
@@ -251,7 +251,7 @@ jQuishy.prototype.delegate = function(desc, evtType, func) {
 }
 
 function _$(el) {
-		return new jQuishy(el);
+		return (el) ? new jQuishy(el) : "1.4.0";
 }
 
 // ============== Children Polyfill ==============
