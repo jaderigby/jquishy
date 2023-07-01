@@ -2,8 +2,8 @@
 jQuishy
 ----------------------
 Author: Jade C. Rigby
-Date: 6/28/2019
-Version: 1.4.0
+Date: 7/01/2023
+Version: 1.5.0
 License: MIT
 ----------------------
 */
@@ -229,6 +229,49 @@ jQuishy.prototype.prepend = function(str) {
 
 jQuishy.prototype.append = function(str) {
 	paPos(this.t, 'beforeend', str);
+	return this;
+}
+
+jQuishy.prototype.parent = function(identity) {
+	function recursiveClass(elem, val) {
+		const parentElem = elem.parentNode;
+		if (parentElem.classList.contains(val)) {
+			return parentElem;
+		}
+		else if (parentElem.nodeName !== 'BODY') {
+			return recursiveClass(parentElem, val);
+		}
+	}
+
+	function recursiveId(elem, val) {
+		const parentElem = elem.parentNode;
+		if (parentElem.id == val) {
+			return elem.parentNode;
+		}
+		else if (parentElem.nodeName !== 'BODY') {
+			recursiveId(elem.parentNode, val);
+		}
+		else {
+			return null;
+		}
+	}
+
+	let match = null;
+	const matchList = [];
+
+	(this.t).forEach( function(_item_) {
+		if (identity.startsWith('.')) {
+			match = recursiveClass(_item_, identity.substring(1));
+			if (match !== undefined) matchList.push(match);
+		}
+		else if (identity.startsWith('#')) {
+			match = recursiveId(_item_, identity.substring(1));
+			if (match !== undefined) matchList.push(match);
+		}
+	});
+
+	this.t = matchList;
+	this.vanilla = (this.t.length === 1) ? this.t[0] : this.t;
 	return this;
 }
 

@@ -26,6 +26,7 @@ __Note:__ Notice that you can replace your existing jQuery declarations by addin
 - toggleClass
 - prepend
 - append
+- parent (return the first parent up the DOM tree to match the selector, class or id)
 - click
 - delegate
 
@@ -52,6 +53,7 @@ Since jQuishy works with native objects (Nodes, NodeLists, HTMLCollections), you
 
 - _$().items = all items matching selector
 - _$().item = first, or only item matching selector
+- _$().vanilla = returns either item or list depending on the result set
 
 Example:
 
