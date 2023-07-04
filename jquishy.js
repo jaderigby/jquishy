@@ -249,7 +249,7 @@ jQuishy.prototype.parent = function(identity) {
 			return elem.parentNode;
 		}
 		else if (parentElem.nodeName !== 'BODY') {
-			recursiveId(elem.parentNode, val);
+			return recursiveId(elem.parentNode, val);
 		}
 		else {
 			return null;
@@ -294,7 +294,7 @@ jQuishy.prototype.delegate = function(desc, evtType, func) {
 }
 
 function _$(el) {
-	return (el) ? new jQuishy(el) : "1.4.0";
+	return (el) ? new jQuishy(el) : "1.5.0";
 }
 // The following line is used for testing, and can be ignored
 // module.exports = _$;

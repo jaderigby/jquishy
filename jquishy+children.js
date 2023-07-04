@@ -2,7 +2,7 @@
 jQuishy + Children Polyfill
 ----------------------
 Author: Jade C. Rigby
-Date: 7/01/2023
+Date: 7/03/2023
 Version: 1.5.0
 License: MIT
 ----------------------
@@ -249,7 +249,7 @@ jQuishy.prototype.parent = function(identity) {
 			return elem.parentNode;
 		}
 		else if (parentElem.nodeName !== 'BODY') {
-			recursiveId(elem.parentNode, val);
+			return recursiveId(elem.parentNode, val);
 		}
 		else {
 			return null;
@@ -294,7 +294,7 @@ jQuishy.prototype.delegate = function(desc, evtType, func) {
 }
 
 function _$(el) {
-		return (el) ? new jQuishy(el) : "1.4.0";
+		return (el) ? new jQuishy(el) : "1.5.0";
 }
 
 // ============== Children Polyfill ==============
